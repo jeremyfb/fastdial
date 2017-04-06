@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
     @IBOutlet var conflictList: UITableView!
-    var eventsWithCallData: [CallData] = []
+
     var myDialer: ConferenceDial = ConferenceDial()
     let mySynthesizer = AVSpeechSynthesizer()
     
@@ -57,10 +57,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
 
-
     func handleEventSelection() {
-    
-        if eventsWithCallData.count <= 0 {
+        
+        if myDialer.eventsWithCallData.count <= 0 {
             // UI updates on main thread
             DispatchQueue.main.async(execute: {
                 self.mainLabel.text = "No events found"
@@ -70,9 +69,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
         
-        if eventsWithCallData.count == 1 {
-            self.myDialer.dialPhone(eventsWithCallData[0].dialString, eventTitle: eventsWithCallData[0].eventTitle)
-            let myTestUtterance = AVSpeechUtterance(string: "Dialing "+eventsWithCallData[0].eventTitle!)
+        if myDialer.eventsWithCallData.count == 1 {
+            self.myDialer.dialPhone(myDialer.eventsWithCallData[0].dialString, eventTitle: myDialer.eventsWithCallData[0].eventTitle)
+            let myTestUtterance = AVSpeechUtterance(string: "Dialing "+myDialer.eventsWithCallData[0].eventTitle!)
             self.mySynthesizer.speak(myTestUtterance)
         } else {
             
@@ -83,9 +82,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             DispatchQueue.main.async(execute: {
                 self.conflictList.isHidden = false
                 self.conflictList.reloadData()
-                })
+            })
         }
     }
+
     
     @IBAction
     func handleButton(_ button: UIButton) {
@@ -106,7 +106,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let myCell = conflictList.dequeueReusableCell(withIdentifier: "BasicTableCell")! as UITableViewCell
         
         let row = (indexPath as NSIndexPath).row
-        myCell.textLabel!.text = eventsWithCallData[row].eventTitle
+        myCell.textLabel!.text = myDialer.eventsWithCallData[row].eventTitle
         myCell.textLabel!.textAlignment = .center
         myCell.textLabel!.textColor = UIColor.white
         myCell.textLabel!.font = UIFont.systemFont(ofSize: 20)
@@ -119,12 +119,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventsWithCallData.count
+        return myDialer.eventsWithCallData.count
     }
     
     //UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.myDialer.dialPhone(eventsWithCallData[(indexPath as NSIndexPath).row].dialString, eventTitle: eventsWithCallData[(indexPath as NSIndexPath).row].eventTitle)
+        self.myDialer.dialPhone(myDialer.eventsWithCallData[(indexPath as NSIndexPath).row].dialString, eventTitle: myDialer.eventsWithCallData[(indexPath as NSIndexPath).row].eventTitle)
     }
 }
 

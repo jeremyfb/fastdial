@@ -123,7 +123,7 @@ class ConferenceDial {
         
         if let s = extractPatternMatch(text, pattern: regexPatternPhoneNumber, field: 0) {
             phoneNumber = s
-            NSLog("number is is [\(phoneNumber)]")
+            NSLog("number is is [\(String(describing: phoneNumber))]")
         }
         
         if let s = extractPatternMatch(text, pattern: regexPatternBridgeID, field: 1) {
