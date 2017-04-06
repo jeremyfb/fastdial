@@ -1,5 +1,0 @@
-version: "Apple Swift version 3.1 (swiftlang-802.0.48 clang-802.0.38)"
-options: "e9abc68748edb120acca126cdbeaf945"
-build_time: [544762075, 423810000]
-inputs:
-  "/Users/bjhernac/Dropbox/src/fastdial/ConferenceDial/ConferenceDial.swift": [542741569, 0]

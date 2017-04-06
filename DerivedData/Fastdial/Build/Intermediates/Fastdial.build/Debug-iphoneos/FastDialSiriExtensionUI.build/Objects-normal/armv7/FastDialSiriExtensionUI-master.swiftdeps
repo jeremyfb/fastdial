@@ -1,5 +1,0 @@
-version: "Apple Swift version 3.1 (swiftlang-802.0.48 clang-802.0.38)"
-options: "2ec0905d21aabf69fb29542fcceb7171"
-build_time: [544762435, 922388000]
-inputs:
-  "/Users/bjhernac/Dropbox/src/fastdial/FastDialSiriExtensionUI/IntentViewController.swift": [542485023, 0]
