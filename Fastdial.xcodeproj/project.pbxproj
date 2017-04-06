@@ -19,7 +19,6 @@
 		25856E961E73251F004C5E89 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25856E941E73251F004C5E89 /* MainInterface.storyboard */; };
 		25856E9A1E73251F004C5E89 /* FastDialSiriExtensionUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 25856E8D1E73251F004C5E89 /* FastDialSiriExtensionUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		25856E9D1E73251F004C5E89 /* FastDialSiriExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 25856E841E73251F004C5E89 /* FastDialSiriExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		25856EB81E7355EE004C5E89 /* ConferenceDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25856EB71E7355EE004C5E89 /* ConferenceDial.swift */; };
 		258B35BB194B8EC500B53FFA /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 258B35BA194B8EC500B53FFA /* iTunesArtwork */; };
 		25F745861E72373800AABF91 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25F745851E72373800AABF91 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
@@ -45,13 +44,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 25856E831E73251F004C5E89;
 			remoteInfo = FastDialSiriExtension;
-		};
-		25856EAF1E7355A1004C5E89 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 257082ED1940D19B006A1E8F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 25856EA91E7355A1004C5E89;
-			remoteInfo = ConferenceDial;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -99,7 +91,6 @@
 		25856E921E73251F004C5E89 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		25856E951E73251F004C5E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		25856E971E73251F004C5E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		25856EAA1E7355A1004C5E89 /* ConferenceDial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConferenceDial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25856EB71E7355EE004C5E89 /* ConferenceDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConferenceDial.swift; path = ../ConferenceDial/ConferenceDial.swift; sourceTree = "<group>"; };
 		258B35BA194B8EC500B53FFA /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		25F745851E72373800AABF91 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -135,13 +126,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		25856EA61E7355A1004C5E89 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -165,7 +149,6 @@
 				257083071940D19B006A1E8F /* fastdialTests.xctest */,
 				25856E841E73251F004C5E89 /* FastDialSiriExtension.appex */,
 				25856E8D1E73251F004C5E89 /* FastDialSiriExtensionUI.appex */,
-				25856EAA1E7355A1004C5E89 /* ConferenceDial.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,16 +232,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		25856EA71E7355A1004C5E89 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		257082F41940D19B006A1E8F /* fastdial */ = {
 			isa = PBXNativeTarget;
@@ -275,7 +248,6 @@
 			dependencies = (
 				25856E991E73251F004C5E89 /* PBXTargetDependency */,
 				25856E9C1E73251F004C5E89 /* PBXTargetDependency */,
-				25856EB01E7355A1004C5E89 /* PBXTargetDependency */,
 			);
 			name = fastdial;
 			productName = fastdial;
@@ -334,24 +306,6 @@
 			productReference = 25856E8D1E73251F004C5E89 /* FastDialSiriExtensionUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		25856EA91E7355A1004C5E89 /* ConferenceDial */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 25856EB31E7355A2004C5E89 /* Build configuration list for PBXNativeTarget "ConferenceDial" */;
-			buildPhases = (
-				25856EA51E7355A1004C5E89 /* Sources */,
-				25856EA61E7355A1004C5E89 /* Frameworks */,
-				25856EA71E7355A1004C5E89 /* Headers */,
-				25856EA81E7355A1004C5E89 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ConferenceDial;
-			productName = ConferenceDial;
-			productReference = 25856EAA1E7355A1004C5E89 /* ConferenceDial.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -364,7 +318,7 @@
 				TargetAttributes = {
 					257082F41940D19B006A1E8F = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 4Q2783C32H;
+						DevelopmentTeam = J7V9D475P7;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -380,18 +334,12 @@
 					};
 					25856E831E73251F004C5E89 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4Q2783C32H;
+						DevelopmentTeam = J7V9D475P7;
 						ProvisioningStyle = Automatic;
 					};
 					25856E8C1E73251F004C5E89 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4Q2783C32H;
-						ProvisioningStyle = Automatic;
-					};
-					25856EA91E7355A1004C5E89 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4Q2783C32H;
-						LastSwiftMigration = 0820;
+						DevelopmentTeam = J7V9D475P7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -413,7 +361,6 @@
 				257083061940D19B006A1E8F /* fastdialTests */,
 				25856E831E73251F004C5E89 /* FastDialSiriExtension */,
 				25856E8C1E73251F004C5E89 /* FastDialSiriExtensionUI */,
-				25856EA91E7355A1004C5E89 /* ConferenceDial */,
 			);
 		};
 /* End PBXProject section */
@@ -449,13 +396,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25856E961E73251F004C5E89 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25856EA81E7355A1004C5E89 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,14 +436,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		25856EA51E7355A1004C5E89 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				25856EB81E7355EE004C5E89 /* ConferenceDial.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -521,11 +453,6 @@
 			isa = PBXTargetDependency;
 			target = 25856E831E73251F004C5E89 /* FastDialSiriExtension */;
 			targetProxy = 25856E9B1E73251F004C5E89 /* PBXContainerItemProxy */;
-		};
-		25856EB01E7355A1004C5E89 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 25856EA91E7355A1004C5E89 /* ConferenceDial */;
-			targetProxy = 25856EAF1E7355A1004C5E89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -644,10 +571,10 @@
 				CODE_SIGN_ENTITLEMENTS = fastdial/fastdial.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = J7V9D475P7;
 				INFOPLIST_FILE = fastdial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -662,10 +589,10 @@
 				CODE_SIGN_ENTITLEMENTS = fastdial/fastdial.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = J7V9D475P7;
 				INFOPLIST_FILE = fastdial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -687,7 +614,7 @@
 				INFOPLIST_FILE = fastdialTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hernacki.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.ConferenceDial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -705,7 +632,7 @@
 				INFOPLIST_FILE = fastdialTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hernacki.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.ConferenceDial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -720,11 +647,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = J7V9D475P7;
 				INFOPLIST_FILE = FastDialSiriExtensionUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtensionUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.fastdial.FastDialSiriExtensionUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -741,11 +668,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = J7V9D475P7;
 				INFOPLIST_FILE = FastDialSiriExtensionUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtensionUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.fastdial.FastDialSiriExtensionUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -760,11 +687,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = J7V9D475P7;
 				INFOPLIST_FILE = FastDialSiriExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.fastdial.FastDialSiriExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -781,75 +708,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = J7V9D475P7;
 				INFOPLIST_FILE = FastDialSiriExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildgears.fastdial.FastDialSiriExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		25856EB41E7355A2004C5E89 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ConferenceDial/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.ConferenceDial;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		25856EB51E7355A2004C5E89 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ConferenceDial/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.ConferenceDial;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -897,15 +763,6 @@
 			buildConfigurations = (
 				25856EA21E73251F004C5E89 /* Debug */,
 				25856EA31E73251F004C5E89 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		25856EB31E7355A2004C5E89 /* Build configuration list for PBXNativeTarget "ConferenceDial" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				25856EB41E7355A2004C5E89 /* Debug */,
-				25856EB51E7355A2004C5E89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
