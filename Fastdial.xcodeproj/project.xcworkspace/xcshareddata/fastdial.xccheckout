@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>264E8D45-B38D-438F-85AE-A22EB204792E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>fastdial</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5B1B9AB7F8A44D05E7630A8E2B8270C46CBC3D78</key>
+		<string>/Users/bjhernac/Dropbox/repos/fastdial.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>fastdial.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5B1B9AB7F8A44D05E7630A8E2B8270C46CBC3D78</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>/Users/bjhernac/Dropbox/repos/fastdial.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5B1B9AB7F8A44D05E7630A8E2B8270C46CBC3D78</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5B1B9AB7F8A44D05E7630A8E2B8270C46CBC3D78</string>
+			<key>IDESourceControlWCCName</key>
+			<string>fastdial</string>
+		</dict>
+	</array>
+</dict>
+</plist>

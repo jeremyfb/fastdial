@@ -1,0 +1,28 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/bjhernac/Dropbox/src/fastdial/DerivedData/Fastdial/Build/Products/Debug-iphoneos/ConferenceDial.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "ConferenceDial-Swift.h",
+          'external-contents': "/Users/bjhernac/Dropbox/src/fastdial/DerivedData/Fastdial/Build/Products/Debug-iphoneos/ConferenceDial.framework/Headers/ConferenceDial-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/bjhernac/Dropbox/src/fastdial/DerivedData/Fastdial/Build/Products/Debug-iphoneos/ConferenceDial.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/bjhernac/Dropbox/src/fastdial/DerivedData/Fastdial/Build/Intermediates/Fastdial.build/Debug-iphoneos/ConferenceDial.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}
