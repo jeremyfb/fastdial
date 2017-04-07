@@ -63,7 +63,7 @@ class ConferenceDial {
         
     }
     func getCurrentCalendarEvent() -> [EKEvent]? {
-        let eventWindow: TimeInterval = 150*60
+        let eventWindow: TimeInterval = 15*60
         
         
         // Create the start/end date components
