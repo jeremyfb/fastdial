@@ -21,11 +21,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var myDialer: ConferenceDial = ConferenceDial()
     let mySynthesizer = AVSpeechSynthesizer()
     
-    struct CallData {
-        var dialString: String?
-        var eventTitle: String?
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
@@ -70,9 +65,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         if myDialer.eventsWithCallData.count == 1 {
-            self.myDialer.dialPhone(myDialer.eventsWithCallData[0].dialString, eventTitle: myDialer.eventsWithCallData[0].eventTitle)
-            let myTestUtterance = AVSpeechUtterance(string: "Dialing "+myDialer.eventsWithCallData[0].eventTitle!)
-            self.mySynthesizer.speak(myTestUtterance)
+            // dial the phone
+            self.dialPhone(myDialer.eventsWithCallData[0])
         } else {
             
             let myTestUtterance = AVSpeechUtterance(string: "(\"eventsWithCallData.count) events")
@@ -124,7 +118,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.myDialer.dialPhone(myDialer.eventsWithCallData[(indexPath as NSIndexPath).row].dialString, eventTitle: myDialer.eventsWithCallData[(indexPath as NSIndexPath).row].eventTitle)
+        self.dialPhone(myDialer.eventsWithCallData[(indexPath as NSIndexPath).row])
+    }
+    
+    func dialPhone(_ event: CallData) {
+        // dial the phone
+        guard let dialURL = URL(string: event.dialString!) else {
+            return
+        }
+        UIApplication.shared.open(dialURL)
+        let myTestUtterance = AVSpeechUtterance(string: "Dialing "+myDialer.eventsWithCallData[0].eventTitle!)
+        self.mySynthesizer.speak(myTestUtterance)
     }
 }
 

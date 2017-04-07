@@ -8,18 +8,31 @@
 
 import UIKit
 import EventKit
+import WatchKit
 import Foundation
 import Intents
 
-
+class CallData {
+    var dialString: String?
+    var eventTitle: String?
+    
+    init (withString: String, withTitle: String) {
+        dialString = withString
+        eventTitle = withTitle
+    }
+    
+    func getDialURL() -> URL? {
+        if dialString == nil {
+            return nil
+        }
+        let myURL = URL(string: dialString!)
+        
+        return myURL
+    }
+}
 class ConferenceDial {
     
     var eventsWithCallData: [CallData] = []
-    
-    struct CallData {
-        var dialString: String?
-        var eventTitle: String?
-    }
     
     func readCalendar() {
             let currentEvents = self.getCurrentCalendarEvent()
@@ -93,7 +106,7 @@ class ConferenceDial {
                         truncatedTitle = (event.title as NSString).substring(to: maxTitleLength)
                     }
                     
-                    let thisCallData = CallData(dialString:dialString, eventTitle:truncatedTitle)
+                    let thisCallData = CallData(withString:dialString, withTitle:truncatedTitle)
                     myEventsWithCallData.append(thisCallData)
                 }
             }
@@ -103,13 +116,15 @@ class ConferenceDial {
         NSLog("Found \(eventsWithCallData.count) events with call data")
     }
     
+/*
     func dialPhone(_ dialString: String!, eventTitle: String!) {
         NSLog("dialing [\(dialString)]")
         
         // dial the phone
-        let uiapp = UIApplication.shared
-        uiapp.open(URL(string: dialString)!)
+            let uiapp = UIApplication.shared
+            uiapp.open(URL(string: dialString)!)
     }
+ */
 
     
     // regex matching/extraction code
