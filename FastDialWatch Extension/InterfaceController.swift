@@ -17,14 +17,15 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        self.myDialer.readCalendar()
-        self.configureTable(withMeetings: myDialer.eventsWithCallData)
+        
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
+        self.myDialer.readCalendar()
+        self.configureTable(withMeetings: myDialer.eventsWithCallData)
         
     }
     

@@ -33,19 +33,38 @@ class CallData {
 class ConferenceDial {
     
     var eventsWithCallData: [CallData] = []
+    var haveCalAccess: Bool = false
+    let store = EKEventStore()
     
     func readCalendar() {
-            let currentEvents = self.getCurrentCalendarEvent()
-            self.extractEventData(currentEvents)
+        // XXX should wait for this to return before proceeding
+        store.requestAccess(to: EKEntityType.event, completion:{granted, error in self.handleCalendarAccess(granted: granted, error: error)})
+        var retryCount = 0
+        while haveCalAccess == false {
+            sleep(2)
+            retryCount+=1
+            if retryCount > 10 {
+                NSLog("Too many attempts to ask permission for calendar. Bailing.")
+                break
+            }
+        }
+        let currentEvents = self.getCurrentCalendarEvent()
+        self.extractEventData(currentEvents)
     }
     
-    
-    func getCurrentCalendarEvent() -> [EKEvent]? {
-        let store = EKEventStore()
-        let eventWindow: TimeInterval = 15*60
+    func handleCalendarAccess(granted: Bool, error: Error?) {
+        NSLog("Calendar access: \(granted)")
+        haveCalAccess = granted
+        if granted == false {
+            NSLog("No access to calendar. Should notify user.")
+            return
+        }
+        store.reset()
         
-        // XXX should wait for this to return before proceeding
-        store.requestAccess(to: EKEntityType.event, completion:{granted, error in assert(granted); return })
+    }
+    func getCurrentCalendarEvent() -> [EKEvent]? {
+        let eventWindow: TimeInterval = 150*60
+        
         
         // Create the start/end date components
         let now = Date()

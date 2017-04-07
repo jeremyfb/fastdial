@@ -69,15 +69,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.dialPhone(myDialer.eventsWithCallData[0])
         } else {
             
-            let myTestUtterance = AVSpeechUtterance(string: "(\"eventsWithCallData.count) events")
+            let myTestUtterance = AVSpeechUtterance(string: "\(myDialer.eventsWithCallData.count) events")
             self.mySynthesizer.speak(myTestUtterance)
             
-            // UI updates on main thread
-            DispatchQueue.main.async(execute: {
-                self.conflictList.isHidden = false
-                self.conflictList.reloadData()
-            })
+            
         }
+        // UI updates on main thread
+        DispatchQueue.main.async(execute: {
+            self.conflictList.isHidden = false
+            self.conflictList.reloadData()
+        })
     }
 
     
@@ -126,7 +127,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let dialURL = URL(string: event.dialString!) else {
             return
         }
-        UIApplication.shared.open(dialURL)
+        let uiapp = UIApplication.shared
+        
+        uiapp.open(dialURL)
         let myTestUtterance = AVSpeechUtterance(string: "Dialing "+myDialer.eventsWithCallData[0].eventTitle!)
         self.mySynthesizer.speak(myTestUtterance)
     }
