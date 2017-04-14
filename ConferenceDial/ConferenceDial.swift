@@ -48,8 +48,7 @@ class ConferenceDial {
                 break
             }
         }
-        let currentEvents = self.getCurrentCalendarEvent()
-        self.extractEventData(currentEvents)
+        
     }
     
     func handleCalendarAccess(granted: Bool, error: Error?) {
@@ -59,12 +58,20 @@ class ConferenceDial {
             NSLog("No access to calendar. Should notify user.")
             return
         }
-        store.reset()
         
+        let cals = store.calendars(for: EKEntityType.event)
+        NSLog("We can access \(cals.count) calendars")
+        for cal in cals {
+            NSLog("    \(cal.title)")
+        }
+        let currentEvents = self.getCurrentCalendarEvent()
+        self.extractEventData(currentEvents)
     }
+    
     func getCurrentCalendarEvent() -> [EKEvent]? {
+        //let eventWindow: TimeInterval = 15*60
         let eventWindow: TimeInterval = 15*60
-        
+
         
         // Create the start/end date components
         let now = Date()

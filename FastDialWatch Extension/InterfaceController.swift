@@ -24,9 +24,12 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        self.myDialer.readCalendar()
-        self.configureTable(withMeetings: myDialer.eventsWithCallData)
-        
+        let globalConcurrentQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
+
+        globalConcurrentQueue.async(execute: {
+            self.myDialer.readCalendar()
+            self.configureTable(withMeetings: self.myDialer.eventsWithCallData)
+        })
     }
     
     override func didDeactivate() {
