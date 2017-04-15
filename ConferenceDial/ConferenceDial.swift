@@ -15,11 +15,13 @@ import Intents
 class ConferenceDial {
     
     var eventsWithCallData: [CallData] = []
+    var useDate: Date?
     
     struct CallData {
         var dialString: String?
         var eventTitle: String?
     }
+
     
     func readCalendar() {
             let currentEvents = self.getCurrentCalendarEvent()
@@ -29,13 +31,23 @@ class ConferenceDial {
     
     func getCurrentCalendarEvent() -> [EKEvent]? {
         let store = EKEventStore()
-        let eventWindow: TimeInterval = 15*60
+        let eventWindow: TimeInterval = 15*60  //in seconds
+        var now = Date()
+        
+        NSLog("Looking for events")
+
         
         // XXX should wait for this to return before proceeding
         store.requestAccess(to: EKEntityType.event, completion:{granted, error in assert(granted); return })
         
         // Create the start/end date components
-        let now = Date()
+        if (useDate != nil) {
+            now = useDate!
+            useDate = nil
+        }
+        
+        NSLog("Using date \(now)")
+        
         let startDate = Date(timeInterval:-eventWindow, since:now)
         let endDate = Date(timeInterval:eventWindow, since:now)
         
@@ -104,7 +116,7 @@ class ConferenceDial {
     }
     
     func dialPhone(_ dialString: String!, eventTitle: String!) {
-        NSLog("dialing [\(dialString)]")
+        NSLog("dialing phone with [\(dialString)]")
         
         // dial the phone
         let uiapp = UIApplication.shared

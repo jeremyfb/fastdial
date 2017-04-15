@@ -16,7 +16,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
+    @IBOutlet var dateButton: UIButton!
+    @IBOutlet var doneButton: UIButton!
     @IBOutlet var conflictList: UITableView!
+    @IBOutlet weak var datePicker: UIDatePicker!
 
     var myDialer: ConferenceDial = ConferenceDial()
     let mySynthesizer = AVSpeechSynthesizer()
@@ -43,18 +46,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        NSLog("Appearing")
         super.viewDidAppear(animated)
-        let globalConcurrentQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
-        
-        globalConcurrentQueue.async(execute: {
-            self.myDialer.readCalendar()
-            self.handleEventSelection()
-        })
+        self.reload();
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func handleEventSelection() {
@@ -63,36 +61,71 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // UI updates on main thread
             DispatchQueue.main.async(execute: {
                 self.mainLabel.text = "No events found"
-                let myTestUtterance = AVSpeechUtterance(string: "no events found")
-                self.mySynthesizer.speak(myTestUtterance)
+                self.mainLabel.isHidden = false
+                self.conflictList.isHidden = true
                 self.mainButton.isHidden = false})
+            let myTestUtterance = AVSpeechUtterance(string: "no events found")
+            self.mySynthesizer.speak(myTestUtterance)
             return
         }
         
         if myDialer.eventsWithCallData.count == 1 {
-            self.myDialer.dialPhone(myDialer.eventsWithCallData[0].dialString, eventTitle: myDialer.eventsWithCallData[0].eventTitle)
-            let myTestUtterance = AVSpeechUtterance(string: "Dialing "+myDialer.eventsWithCallData[0].eventTitle!)
+            // UI updates on main thread
+            DispatchQueue.main.async(execute: {
+                self.mainLabel.text = "Dialing "+self.myDialer.eventsWithCallData[0].eventTitle!
+                self.mainLabel.isHidden = false
+                self.conflictList.isHidden = true
+            })
+            let myTestUtterance = AVSpeechUtterance(string: "Dialing "+self.myDialer.eventsWithCallData[0].eventTitle!)
             self.mySynthesizer.speak(myTestUtterance)
+            self.myDialer.dialPhone(self.myDialer.eventsWithCallData[0].dialString, eventTitle: self.myDialer.eventsWithCallData[0].eventTitle)
         } else {
-            
-            let myTestUtterance = AVSpeechUtterance(string: "(\"eventsWithCallData.count) events")
-            self.mySynthesizer.speak(myTestUtterance)
-            
             // UI updates on main thread
             DispatchQueue.main.async(execute: {
                 self.conflictList.isHidden = false
                 self.conflictList.reloadData()
             })
+            let myTestUtterance = AVSpeechUtterance(string: "\(myDialer.eventsWithCallData.count) events")
+            self.mySynthesizer.speak(myTestUtterance)
         }
     }
 
     
     @IBAction
-    func handleButton(_ button: UIButton) {
+    func handleAgainButton(_ button: UIButton) {
         
         // XXX would be nice to animate fade
+        self.mainLabel.isHidden = false
         self.mainButton.isHidden = true
+        self.reload();
+    }
+    
+    @IBAction
+    func handleDateButton(_ button: UIButton) {
         
+        self.datePicker.isHidden = false;
+        self.doneButton.isHidden = false;
+        self.mainButton.isHidden = true;
+        self.mainLabel.isHidden = true;
+        self.conflictList.isHidden = true;
+        
+    }
+    
+    @IBAction
+    func handleDoneButton(_ button: UIButton) {
+        
+        self.datePicker.isHidden = true;
+        self.doneButton.isHidden = true;
+        self.mainButton.isHidden = false;
+        self.mainLabel.isHidden = false;
+        self.conflictList.isHidden = false;
+        
+        self.myDialer.useDate =  self.datePicker.date
+        self.reload();
+    }
+    
+    
+    func reload() {
         let globalConcurrentQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
         
         globalConcurrentQueue.async(execute: {
