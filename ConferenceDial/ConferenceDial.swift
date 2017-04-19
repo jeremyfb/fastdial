@@ -3,6 +3,7 @@
 //  fastdial
 //
 //  Created by Brian J Hernacki on 3/10/17.
+//  Updated 4/19/17
 //  Copyright © 2017 Brian J Hernacki. All rights reserved.
 //
 
@@ -73,8 +74,14 @@ class ConferenceDial {
         let eventWindow: TimeInterval = 15*60
 
         
-        // Create the start/end date components
-        let now = Date()
+        // Create the start/end date components. this allows us to select the date center mostly for debug purposes
+        if (useDate != nil) {
+            now = useDate!
+            useDate = nil
+        }
+        
+        NSLog("Using date \(now)")
+        
         let startDate = Date(timeInterval:-eventWindow, since:now)
         let endDate = Date(timeInterval:eventWindow, since:now)
         
@@ -85,7 +92,7 @@ class ConferenceDial {
         // Fetch all events that match the predicate
         if events.count > 0 {
             
-            NSLog("found \(events.count) matching events")
+            NSLog("Found \(events.count) matching events")
             
             return events
         }
@@ -94,7 +101,6 @@ class ConferenceDial {
     
     func extractEventData(_ events: [EKEvent]?) {
         let maxTitleLength = 15
-        let defaultPhoneNumber = "916-356-2663"
         
         if let theEvents = events {
             var myEventsWithCallData: [CallData] = []
@@ -111,7 +117,7 @@ class ConferenceDial {
                     } else {
                         // handle some odd mtgs that only include bridge ID and code
                         if codeString!.characters.count > 0 {
-                            dialString += defaultPhoneNumber
+                            dialString += self.defaultPhoneNumber
                         } else {
                             // no phone number and no dial code, nothing to do
                             NSLog("No dial information in event")
@@ -144,7 +150,7 @@ class ConferenceDial {
     
 /*
     func dialPhone(_ dialString: String!, eventTitle: String!) {
-        NSLog("dialing [\(dialString)]")
+        NSLog("Dialing phone with [\(dialString)]")
         
         // dial the phone
             let uiapp = UIApplication.shared
@@ -153,7 +159,8 @@ class ConferenceDial {
  */
 
     
-    // regex matching/extraction code
+    // The only thing necessary for evil to triumph is for good men to attempt to solve problems
+    // using regular expressions
     func extractDialStrings(_ text: String) -> (phoneNumber: String?, codeString: String?) {
         
         var phoneNumber: String?
@@ -164,7 +171,7 @@ class ConferenceDial {
         
         if let s = extractPatternMatch(text, pattern: regexPatternPhoneNumber, field: 0) {
             phoneNumber = s
-            NSLog("number is is [\(String(describing: phoneNumber))]")
+            NSLog("Number is is [\(String(describing: phoneNumber))]")
         }
         
         if let s = extractPatternMatch(text, pattern: regexPatternBridgeID, field: 1) {
@@ -175,7 +182,7 @@ class ConferenceDial {
             codeString += ",,,\(s)"
         }
         
-        NSLog("code is [\(codeString)]")
+        NSLog("Code is [\(codeString)]")
         return (phoneNumber, codeString)
     }
     
@@ -191,7 +198,6 @@ class ConferenceDial {
                 pattern:pattern,
                 options:NSRegularExpression.Options.caseInsensitive)
             
-            
             NSLog("Using regex: \(pattern)")
             
             regex.enumerateMatches(
@@ -202,7 +208,7 @@ class ConferenceDial {
                     (match: NSTextCheckingResult?, flags: NSRegularExpression.MatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) in
                     if let thisMatch = match {
                         let matchString = myText.substring(with: thisMatch.rangeAt(field))
-                        NSLog("found match - \(matchString)")
+                        NSLog("Found match - \(matchString)")
                         resultString = matchString
                     }
             });

@@ -3,6 +3,7 @@
 //  fastdial
 //
 //  Created by Brian J Hernacki on 6/5/14.
+//  Updated 4/19/17
 //  Copyright (c) 2014 Brian J Hernacki. All rights reserved.
 //
 
@@ -36,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        let rootViewController = self.window!.rootViewController
+        rootViewController?.viewDidAppear(false);
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

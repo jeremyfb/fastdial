@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Searching for events..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTT-J7-enk">
@@ -69,6 +69,9 @@
                     </view>
                     <connections>
                         <outlet property="conflictList" destination="JmG-93-Xd3" id="cXx-Cb-gcn"/>
+                        <outlet property="dateButton" destination="M5b-RX-gz2" id="vsb-eU-n8X"/>
+                        <outlet property="datePicker" destination="Zs8-dm-U86" id="Rnr-FU-nFU"/>
+                        <outlet property="doneButton" destination="eS9-Zi-7a8" id="0Ad-dB-pX7"/>
                         <outlet property="mainButton" destination="aIM-Zw-1Pu" id="6Lj-w4-r5T"/>
                         <outlet property="mainLabel" destination="tTT-J7-enk" id="xSg-us-3Cq"/>
                     </connections>

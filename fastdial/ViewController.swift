@@ -3,6 +3,7 @@
 //  fastdial
 //
 //  Created by Brian J Hernacki on 6/5/14.
+//  Updated 4/19/17
 //  Copyright (c) 2014 Brian J Hernacki. All rights reserved.
 //
 
@@ -13,12 +14,18 @@ import Intents
 import AVFoundation
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    //our various UI connections
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
+    @IBOutlet var dateButton: UIButton!
+    @IBOutlet var doneButton: UIButton!
     @IBOutlet var conflictList: UITableView!
+    @IBOutlet weak var datePicker: UIDatePicker!
 
+    // all the calendar/event parsing smarts are in here
     var myDialer: ConferenceDial = ConferenceDial()
+    // keep track if we've spawned a call to control re-activation list reloads
+    var didCall: Bool = false
     let mySynthesizer = AVSpeechSynthesizer()
     
     required init(coder aDecoder: NSCoder) {
@@ -27,29 +34,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         INPreferences.requestSiriAuthorization { (status) in
-            NSLog("new status: \(status)")
+            NSLog("New status: \(status)")
         }
         
-        //test TTS
+        // fire up the speech machine
         let myTestUtterance = AVSpeechUtterance(string: "welcome to fast dial")
         mySynthesizer.speak(myTestUtterance)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let globalConcurrentQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
-        
-        globalConcurrentQueue.async(execute: {
-            self.myDialer.readCalendar()
-            self.handleEventSelection()
-        })
+        if (self.didCall == false) {
+             NSLog("Reloading event data")
+           self.reload();
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func handleEventSelection() {
@@ -58,9 +61,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // UI updates on main thread
             DispatchQueue.main.async(execute: {
                 self.mainLabel.text = "No events found"
-                let myTestUtterance = AVSpeechUtterance(string: "no events found")
-                self.mySynthesizer.speak(myTestUtterance)
+                self.mainLabel.isHidden = false
+                self.conflictList.isHidden = true
                 self.mainButton.isHidden = false})
+            let myTestUtterance = AVSpeechUtterance(string: "no events found")
+            self.mySynthesizer.speak(myTestUtterance)
             return
         }
         
@@ -83,11 +88,41 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     
     @IBAction
-    func handleButton(_ button: UIButton) {
+    func handleAgainButton(_ button: UIButton) {
         
         // XXX would be nice to animate fade
+        self.mainLabel.isHidden = false
         self.mainButton.isHidden = true
+        self.didCall = false
+        self.reload();
+    }
+    
+    @IBAction
+    func handleDateButton(_ button: UIButton) {
         
+        self.datePicker.isHidden = false;
+        self.doneButton.isHidden = false;
+        self.mainButton.isHidden = true;
+        self.mainLabel.isHidden = true;
+        self.conflictList.isHidden = true;
+        
+    }
+    
+    @IBAction
+    func handleDoneButton(_ button: UIButton) {
+        
+        self.datePicker.isHidden = true;
+        self.doneButton.isHidden = true;
+        self.mainButton.isHidden = false;
+        self.mainLabel.isHidden = false;
+        self.conflictList.isHidden = false;
+        
+        self.myDialer.useDate =  self.datePicker.date
+        self.reload();
+    }
+    
+    
+    func reload() {
         let globalConcurrentQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
         
         globalConcurrentQueue.async(execute: {
