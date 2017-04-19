@@ -3,6 +3,7 @@
 //  fastdial
 //
 //  Created by Brian J Hernacki on 6/5/14.
+//  Updated 4/19/17
 //  Copyright (c) 2014 Brian J Hernacki. All rights reserved.
 //
 
@@ -13,7 +14,7 @@ import Intents
 import AVFoundation
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    //our various UI connections
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
     @IBOutlet var dateButton: UIButton!
@@ -21,13 +22,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var conflictList: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
 
+    // all the calendar/event parsing smarts are in here
     var myDialer: ConferenceDial = ConferenceDial()
+    // keep track if we've spawned a call to control re-activation list reloads
+    var didCall: Bool = false
     let mySynthesizer = AVSpeechSynthesizer()
-    
-    struct CallData {
-        var dialString: String?
-        var eventTitle: String?
-    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -35,20 +34,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         INPreferences.requestSiriAuthorization { (status) in
-            NSLog("new status: \(status)")
+            NSLog("New status: \(status)")
         }
         
-        //test TTS
+        // fire up the speech machine
         let myTestUtterance = AVSpeechUtterance(string: "welcome to fast dial")
         mySynthesizer.speak(myTestUtterance)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        NSLog("Appearing")
         super.viewDidAppear(animated)
-        self.reload();
+        if (self.didCall == false) {
+             NSLog("Reloading event data")
+           self.reload();
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +79,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let myTestUtterance = AVSpeechUtterance(string: "Dialing "+self.myDialer.eventsWithCallData[0].eventTitle!)
             self.mySynthesizer.speak(myTestUtterance)
             self.myDialer.dialPhone(self.myDialer.eventsWithCallData[0].dialString, eventTitle: self.myDialer.eventsWithCallData[0].eventTitle)
+            self.didCall = true
         } else {
             // UI updates on main thread
             DispatchQueue.main.async(execute: {
@@ -97,6 +98,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // XXX would be nice to animate fade
         self.mainLabel.isHidden = false
         self.mainButton.isHidden = true
+        self.didCall = false
         self.reload();
     }
     
@@ -158,6 +160,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.myDialer.dialPhone(myDialer.eventsWithCallData[(indexPath as NSIndexPath).row].dialString, eventTitle: myDialer.eventsWithCallData[(indexPath as NSIndexPath).row].eventTitle)
+        self.didCall = true
     }
 }
 
