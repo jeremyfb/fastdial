@@ -70,10 +70,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         if myDialer.eventsWithCallData.count == 1 {
-            // dial the phone
-            self.dialPhone(myDialer.eventsWithCallData[0])
+            // UI updates on main thread
+            DispatchQueue.main.async(execute: {
+                self.mainLabel.text = "Dialing "+self.myDialer.eventsWithCallData[0].eventTitle!
+                self.mainLabel.isHidden = false
+                self.conflictList.isHidden = true
+            })
+            let myTestUtterance = AVSpeechUtterance(string: "Dialing "+self.myDialer.eventsWithCallData[0].eventTitle!)
+            self.mySynthesizer.speak(myTestUtterance)
+            self.dialPhone(self.myDialer.eventsWithCallData[0])
+            self.didCall = true
         } else {
-            
+            // UI updates on main thread
+            DispatchQueue.main.async(execute: {
+                self.conflictList.isHidden = false
+                self.conflictList.reloadData()
+            })
             let myTestUtterance = AVSpeechUtterance(string: "\(myDialer.eventsWithCallData.count) events")
             self.mySynthesizer.speak(myTestUtterance)
             
@@ -155,6 +167,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.dialPhone(myDialer.eventsWithCallData[(indexPath as NSIndexPath).row])
+        self.didCall = true
     }
     
     func dialPhone(_ event: CallData) {

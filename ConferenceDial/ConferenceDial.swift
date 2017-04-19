@@ -33,9 +33,13 @@ class CallData {
 }
 class ConferenceDial {
     
+    // I find this a vile sin but the data quality leaves me little choice
+    // were I not just hacking, we'd make this a preference or something
+    let defaultPhoneNumber = "+1-916-356-2663"
     var eventsWithCallData: [CallData] = []
     var haveCalAccess: Bool = false
     let store = EKEventStore()
+    var useDate: Date?
     
     func readCalendar() {
         // XXX should wait for this to return before proceeding
@@ -74,6 +78,13 @@ class ConferenceDial {
         let eventWindow: TimeInterval = 15*60
 
         
+        NSLog("Looking for events")
+
+        
+        // XXX should wait for this to return before proceeding
+        // store.requestAccess(to: EKEntityType.event, completion:{granted, error in assert(granted); return })
+        
+        var now = Date()
         // Create the start/end date components. this allows us to select the date center mostly for debug purposes
         if (useDate != nil) {
             now = useDate!

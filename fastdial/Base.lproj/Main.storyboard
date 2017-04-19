@@ -64,6 +64,34 @@
                                     <action selector="handleButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QxF-Tg-s31"/>
                                 </connections>
                             </button>
+                            <datePicker hidden="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zs8-dm-U86">
+                                <rect key="frame" x="0.0" y="36" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="513901951.42800599">
+                                    <!--2017-04-14 22:32:31 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5b-RX-gz2">
+                                <rect key="frame" x="16" y="617" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Date">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleDateButton:" destination="vXZ-lx-hvc" eventType="touchDown" id="daz-W3-Dpv"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eS9-Zi-7a8">
+                                <rect key="frame" x="300" y="617" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleDateButton:" destination="vXZ-lx-hvc" eventType="touchDown" id="Ree-Wh-zDE"/>
+                                    <action selector="handleDoneButton:" destination="vXZ-lx-hvc" eventType="touchDown" id="aaG-dv-mro"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.38851891629879204" blue="0.80899234693877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
