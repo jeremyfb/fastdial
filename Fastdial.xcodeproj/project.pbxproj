@@ -825,6 +825,7 @@
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_TEAM = 4Q2783C32H;
 				INFOPLIST_FILE = fastdial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -845,6 +846,7 @@
 				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_TEAM = 4Q2783C32H;
 				INFOPLIST_FILE = fastdial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
