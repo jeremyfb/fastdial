@@ -178,7 +178,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let uiapp = UIApplication.shared
         
         uiapp.open(dialURL)
-        let myTestUtterance = AVSpeechUtterance(string: "Dialing "+myDialer.eventsWithCallData[0].eventTitle!)
+        let myTestUtterance = AVSpeechUtterance(string: "Dialing "+event.eventTitle!)
         self.mySynthesizer.speak(myTestUtterance)
     }
 }
