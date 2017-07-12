@@ -233,6 +233,28 @@ class ConferenceDial {
         }
     }
     
+    func toDictionary( ) -> Dictionary<String, String> {
+        var retDictionary: Dictionary<String, String> = [:]
+        
+        
+        for event in eventsWithCallData {
+            if event.eventTitle != nil {
+                retDictionary[event.eventTitle!] = event.dialString
+            }
+        }
+        
+        return retDictionary
+    }
+    func fromDictonary(_ inDictionary: Dictionary<String, String>) {
+        var index = 0
+        var myEventsWithCallData: [CallData] = []
+        for event in inDictionary {
+            let thisCallData = CallData(withString: event.value, withTitle: event.key)
+            myEventsWithCallData.append(thisCallData)
+            index += 1
+        }
+        eventsWithCallData = myEventsWithCallData
+    }
 }
 
 

@@ -12,8 +12,9 @@ import EventKit
 import Foundation
 import Intents
 import AVFoundation
+import WatchConnectivity
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, WCSessionDelegate {
     //our various UI connections
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var mainButton: UIButton!
@@ -27,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // keep track if we've spawned a call to control re-activation list reloads
     var didCall: Bool = false
     let mySynthesizer = AVSpeechSynthesizer()
+    var watchCommSession: WCSession? = nil
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -41,6 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // fire up the speech machine
         let myTestUtterance = AVSpeechUtterance(string: "welcome to fast dial")
         mySynthesizer.speak(myTestUtterance)
+        startWatchComms()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -139,7 +142,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         globalConcurrentQueue.async(execute: {
             self.myDialer.readCalendar()
-            self.handleEventSelection()})
+            self.handleEventSelection()
+            // Now send to the watch if there is one
+            if self.watchCommSession != nil {
+                // Send events to watch over active session
+                let callEvents = self.myDialer.toDictionary() as Dictionary<String, Any>
+                self.watchCommSession!.transferUserInfo(callEvents)
+            }
+
+        })
     }
     
     // UITableViewDataSource
@@ -180,6 +191,71 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         uiapp.open(dialURL)
         let myTestUtterance = AVSpeechUtterance(string: "Dialing "+event.eventTitle!)
         self.mySynthesizer.speak(myTestUtterance)
+    }
+    
+    // MARK: Watch communication
+    
+    func startWatchComms() {
+        if WCSession.isSupported() {
+            let defaultSession = WCSession.default()
+            defaultSession.delegate = self
+            defaultSession.activate()
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Swift.Void) {
+        /*
+         Because this method is likely to be called when the app is in the
+         background, begin a background task. Starting a background task ensures
+         that your app is not suspended before it has a chance to send its reply.
+         */
+        let application = UIApplication.shared
+        
+        var identifier = UIBackgroundTaskInvalid;
+        // The "endBlock" ensures that the background task is ended and the identifier is reset.
+        let endBlock = {
+            if identifier != UIBackgroundTaskInvalid {
+                application.endBackgroundTask(identifier)
+            }
+            identifier = UIBackgroundTaskInvalid
+        };
+        
+        identifier = application.beginBackgroundTask(expirationHandler: endBlock)
+        
+        // Re-assign the "reply" block to include a call to "endBlock" after "reply" is called.
+        let replyHandler = {(replyInfo: [String : Any]) in
+            replyHandler(replyInfo)
+            
+            endBlock();
+        }
+        
+        // Receives text input result from the WatchKit app extension.
+        print("Message: \(message)")
+        
+        // To bootstrap a watch-only launch the watch sends the message so we will send it the meetings
+        let callEvents = self.myDialer.toDictionary() as Dictionary<String, Any>
+        session.transferUserInfo(callEvents)
+        
+        // Sends a confirmation message to the WatchKit app extension that the text input result was received.
+        replyHandler(["Confirmation" : "Text was received."])
+    }
+    
+    func session(_ session: WCSession, didReceiveUserInfo info: [String : Any] = [:]) {
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        if activationState == WCSessionActivationState.activated {
+            watchCommSession = session
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        watchCommSession = nil
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        watchCommSession = nil
     }
 }
 

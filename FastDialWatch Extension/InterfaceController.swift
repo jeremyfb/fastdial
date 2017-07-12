@@ -7,12 +7,15 @@
 //
 
 import WatchKit
+import WatchConnectivity
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var meetingTable: WKInterfaceTable!
     var myDialer: ConferenceDial = ConferenceDial()
+    var didCall = false
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -25,9 +28,11 @@ class InterfaceController: WKInterfaceController {
         super.willActivate()
         
         let globalConcurrentQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
+        
+        startWatchComms()
 
         globalConcurrentQueue.async(execute: {
-            self.myDialer.readCalendar()
+            //self.myDialer.readCalendar()
             self.configureTable(withMeetings: self.myDialer.eventsWithCallData)
         })
     }
@@ -57,7 +62,10 @@ class InterfaceController: WKInterfaceController {
             guard let dialURL = URL(string: meetings[0].dialString!) else {
                 return
             }
-            WKExtension.shared().openSystemURL(dialURL)
+            if !didCall {
+                WKExtension.shared().openSystemURL(dialURL)
+                self.didCall = true
+            }
         }
 
     }
@@ -71,5 +79,45 @@ class InterfaceController: WKInterfaceController {
         }
         WKExtension.shared().openSystemURL(dialURL)
 
+    }
+    
+    // MARK: Watch communication
+    func startWatchComms() {
+        if WCSession.isSupported() {
+            let defaultSession = WCSession.default()
+            defaultSession.delegate = self
+            defaultSession.activate()
+        }
+    }
+
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Swift.Void) {
+        /*
+         Because this method is likely to be called when the app is in the
+         background, begin a background task. Starting a background task ensures
+         that your app is not suspended before it has a chance to send its reply.
+         */
+        
+    }
+
+    
+    func session(_ session: WCSession, didReceiveUserInfo info: [String : Any] = [:]) {
+        // Should be incoming call data from the phone
+        let globalConcurrentQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.default)
+        myDialer.fromDictonary(info as! Dictionary<String, String>)
+        globalConcurrentQueue.async(execute: {
+            self.configureTable(withMeetings: self.myDialer.eventsWithCallData)
+        })
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        if activationState == WCSessionActivationState.activated {
+            
+            session.sendMessage(["Calendar" : "want"], replyHandler: { (replyMessage) in
+                print("Reply Info: \(replyMessage)")
+            }, errorHandler: { (error) in
+                print("Error: \(error.localizedDescription)")
+            })
+        }
     }
 }
