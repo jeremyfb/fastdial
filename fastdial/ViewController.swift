@@ -48,14 +48,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (self.didCall == false) {
-             NSLog("Reloading event data")
-           self.reload();
-        }
+        self.reload()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        NSLog("Memory warning!")
     }
 
     func handleEventSelection() {
@@ -81,8 +79,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             })
             let myTestUtterance = AVSpeechUtterance(string: "Dialing "+self.myDialer.eventsWithCallData[0].eventTitle!)
             self.mySynthesizer.speak(myTestUtterance)
-            self.dialPhone(self.myDialer.eventsWithCallData[0])
-            self.didCall = true
+            if (self.didCall == false) {
+                self.dialPhone(self.myDialer.eventsWithCallData[0])
+            }
         } else {
             // UI updates on main thread
             DispatchQueue.main.async(execute: {
@@ -178,7 +177,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.dialPhone(myDialer.eventsWithCallData[(indexPath as NSIndexPath).row])
-        self.didCall = true
     }
     
     func dialPhone(_ event: CallData) {
@@ -188,9 +186,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         let uiapp = UIApplication.shared
         
-        uiapp.open(dialURL)
+        
         let myTestUtterance = AVSpeechUtterance(string: "Dialing "+event.eventTitle!)
         self.mySynthesizer.speak(myTestUtterance)
+        uiapp.open(dialURL)
+        self.didCall = true
     }
     
     // MARK: Watch communication
@@ -233,6 +233,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Message: \(message)")
         
         // To bootstrap a watch-only launch the watch sends the message so we will send it the meetings
+        self.myDialer.readCalendar()
         let callEvents = self.myDialer.toDictionary() as Dictionary<String, Any>
         session.transferUserInfo(callEvents)
         

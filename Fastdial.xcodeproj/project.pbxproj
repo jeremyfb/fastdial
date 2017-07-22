@@ -486,7 +486,7 @@
 				TargetAttributes = {
 					257082F41940D19B006A1E8F = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 4Q2783C32H;
+						DevelopmentTeam = D7MBG646T5;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -502,12 +502,12 @@
 					};
 					25856E831E73251F004C5E89 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4Q2783C32H;
+						DevelopmentTeam = D7MBG646T5;
 						ProvisioningStyle = Automatic;
 					};
 					25856E8C1E73251F004C5E89 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4Q2783C32H;
+						DevelopmentTeam = D7MBG646T5;
 						ProvisioningStyle = Automatic;
 					};
 					25856EA91E7355A1004C5E89 = {
@@ -515,12 +515,12 @@
 					};
 					5FCAD59F1E96BE88001EE5EB = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 4Q2783C32H;
+						DevelopmentTeam = D7MBG646T5;
 						ProvisioningStyle = Automatic;
 					};
 					5FCAD5AB1E96BE88001EE5EB = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 4Q2783C32H;
+						DevelopmentTeam = D7MBG646T5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -823,11 +823,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = fastdial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -844,11 +844,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_ACTIVITY_MODE = "";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = fastdial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -871,7 +871,7 @@
 				INFOPLIST_FILE = fastdialTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -889,7 +889,7 @@
 				INFOPLIST_FILE = fastdialTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -906,11 +906,11 @@
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = FastDialSiriExtensionUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtensionUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.FastDialSiriExtensionUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -928,11 +928,11 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_ACTIVITY_MODE = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = FastDialSiriExtensionUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtensionUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.FastDialSiriExtensionUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -947,11 +947,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = FastDialSiriExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.FastDialSiriExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -968,11 +968,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = FastDialSiriExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.FastDialSiriExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.FastDialSiriExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -1014,11 +1014,11 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = "FastDialWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1038,11 +1038,11 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				INFOPLIST_FILE = "FastDialWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1063,11 +1063,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				IBSC_MODULE = FastDialWatch_Extension;
 				INFOPLIST_FILE = FastDialWatch/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1090,11 +1090,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4Q2783C32H;
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				IBSC_MODULE = FastDialWatch_Extension;
 				INFOPLIST_FILE = FastDialWatch/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intelsecurity.fastdial.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ghettosoft.fastdial.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

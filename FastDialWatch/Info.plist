@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.intelsecurity.fastdial</string>
+	<string>com.ghettosoft.fastdial</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
