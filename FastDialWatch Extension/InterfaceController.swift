@@ -83,11 +83,21 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     // MARK: Watch communication
     func startWatchComms() {
-        if WCSession.isSupported() {
-            let defaultSession = WCSession.default()
-            defaultSession.delegate = self
+        if !WCSession.isSupported() {
+            return
+        }
+        
+        let defaultSession = WCSession.default()
+        defaultSession.delegate = self
+        
+        if defaultSession.activationState != .activated {
             defaultSession.activate()
         }
+        
+        // Send a ping to the phone to wake it up and send over the latest calendar
+        defaultSession.sendMessage(["Req" : "Meetings"], replyHandler: nil, errorHandler: nil)
+        
+        
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Swift.Void) {
