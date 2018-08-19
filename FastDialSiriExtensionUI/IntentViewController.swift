@@ -2,8 +2,8 @@
 //  IntentViewController.swift
 //  FastDialSiriExtensionUI
 //
-//  Created by Brian J Hernacki on 3/10/17.
-//  Copyright © 2017 Brian J Hernacki. All rights reserved.
+//  Created by Brian J Hernacki and Jeremy F Bennett on 3/10/17.
+//  Copyright © 2018 Brian J Hernacki and Jeremy F Bennett. All rights reserved.
 //
 
 import IntentsUI

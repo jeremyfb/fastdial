@@ -19,7 +19,6 @@
 		25856E961E73251F004C5E89 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25856E941E73251F004C5E89 /* MainInterface.storyboard */; };
 		25856E9A1E73251F004C5E89 /* FastDialSiriExtensionUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 25856E8D1E73251F004C5E89 /* FastDialSiriExtensionUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		25856E9D1E73251F004C5E89 /* FastDialSiriExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 25856E841E73251F004C5E89 /* FastDialSiriExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		258B35BB194B8EC500B53FFA /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 258B35BA194B8EC500B53FFA /* iTunesArtwork */; };
 		25F745861E72373800AABF91 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25F745851E72373800AABF91 /* Launch Screen.storyboard */; };
 		5FCAD5A41E96BE88001EE5EB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAD5A21E96BE88001EE5EB /* Interface.storyboard */; };
 		5FCAD5A61E96BE88001EE5EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAD5A51E96BE88001EE5EB /* Assets.xcassets */; };
@@ -31,6 +30,7 @@
 		5FCAD5BE1E96BE88001EE5EB /* FastDialWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5FCAD5A01E96BE88001EE5EB /* FastDialWatch.app */; };
 		5FCAD5C81E96C484001EE5EB /* MeetingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAD5C71E96C484001EE5EB /* MeetingRow.swift */; };
 		5FCAD5C91E96D5A2001EE5EB /* ConferenceDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25856EB71E7355EE004C5E89 /* ConferenceDial.swift */; };
+		76F46AF22129FF8800683759 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F46AF12129FF8800683759 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,8 +144,7 @@
 		25856E921E73251F004C5E89 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		25856E951E73251F004C5E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		25856E971E73251F004C5E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		25856EB71E7355EE004C5E89 /* ConferenceDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConferenceDial.swift; path = ../ConferenceDial/ConferenceDial.swift; sourceTree = "<group>"; };
-		258B35BA194B8EC500B53FFA /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		25856EB71E7355EE004C5E89 /* ConferenceDial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConferenceDial.swift; sourceTree = "<group>"; };
 		25F745851E72373800AABF91 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5FCAD5A01E96BE88001EE5EB /* FastDialWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastDialWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCAD5A31E96BE88001EE5EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -159,6 +158,7 @@
 		5FCAD5B91E96BE88001EE5EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FCAD5BB1E96BE88001EE5EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FCAD5C71E96C484001EE5EB /* MeetingRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingRow.swift; sourceTree = "<group>"; };
+		76F46AF12129FF8800683759 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ConferenceDial/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +211,7 @@
 		257082EC1940D19B006A1E8F = {
 			isa = PBXGroup;
 			children = (
+				76F46AF02129FF4D00683759 /* ConferenceDial Framework */,
 				25BB5F871947A0E50083799C /* Resources */,
 				257082F71940D19B006A1E8F /* FastdialApp */,
 				2570830A1940D19B006A1E8F /* FastdialTests */,
@@ -242,7 +243,6 @@
 				25856E7F1E7324C7004C5E89 /* fastdial.entitlements */,
 				257082FA1940D19B006A1E8F /* AppDelegate.swift */,
 				257082FC1940D19B006A1E8F /* ViewController.swift */,
-				25856EB71E7355EE004C5E89 /* ConferenceDial.swift */,
 				25F745851E72373800AABF91 /* Launch Screen.storyboard */,
 				257082FE1940D19B006A1E8F /* Main.storyboard */,
 				257083011940D19B006A1E8F /* Images.xcassets */,
@@ -308,7 +308,6 @@
 		25BB5F871947A0E50083799C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				258B35BA194B8EC500B53FFA /* iTunesArtwork */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -343,6 +342,16 @@
 				5FCAD5B21E96BE88001EE5EB /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76F46AF02129FF4D00683759 /* ConferenceDial Framework */ = {
+			isa = PBXGroup;
+			children = (
+				76F46AF12129FF8800683759 /* Info.plist */,
+				25856EB71E7355EE004C5E89 /* ConferenceDial.swift */,
+			);
+			name = "ConferenceDial Framework";
+			path = fastdial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,7 +490,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Brian J Hernacki";
 				TargetAttributes = {
 					257082F41940D19B006A1E8F = {
@@ -511,6 +520,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					25856EA91E7355A1004C5E89 = {
+						DevelopmentTeam = D7MBG646T5;
 						ProvisioningStyle = Automatic;
 					};
 					5FCAD59F1E96BE88001EE5EB = {
@@ -555,7 +565,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				257083001940D19B006A1E8F /* Main.storyboard in Resources */,
-				258B35BB194B8EC500B53FFA /* iTunesArtwork in Resources */,
 				25F745861E72373800AABF91 /* Launch Screen.storyboard in Resources */,
 				257083021940D19B006A1E8F /* Images.xcassets in Resources */,
 			);
@@ -587,6 +596,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F46AF22129FF8800683759 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,14 +744,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -781,14 +799,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -817,7 +843,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = fastdial/fastdial.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -839,7 +864,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = fastdial/fastdial.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -982,11 +1006,14 @@
 		5F6FE00C1E983E820024B0BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D7MBG646T5;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "$(SRCROOT)/ConferenceDial/Info.plist";
 				PRODUCT_NAME = ConferenceDial;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -996,10 +1023,13 @@
 		5F6FE00D1E983E820024B0BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D7MBG646T5;
+				INFOPLIST_FILE = "$(SRCROOT)/ConferenceDial/Info.plist";
 				PRODUCT_NAME = ConferenceDial;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

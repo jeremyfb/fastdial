@@ -3,7 +3,7 @@
 //  FastDialWatch Extension
 //
 //  Created by Jeremy Bennett on 4/6/17.
-//  Copyright © 2017 Brian J Hernacki. All rights reserved.
+//  Copyright © 2017 Brian J Hernacki and Jeremy F Bennett. All rights reserved.
 //
 
 import WatchKit

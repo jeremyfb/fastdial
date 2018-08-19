@@ -2,9 +2,8 @@
 //  ViewController.swift
 //  fastdial
 //
-//  Created by Brian J Hernacki on 6/5/14.
-//  Updated 4/19/17
-//  Copyright (c) 2014 Brian J Hernacki. All rights reserved.
+//  Created by Brian J Hernacki and Jeremy F Bennett on 6/5/14.
+//  Copyright (c) 2018 Brian J Hernacki and Jeremy F Bennett. All rights reserved.
 //
 
 import UIKit
@@ -25,6 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // all the calendar/event parsing smarts are in here
     var myDialer: ConferenceDial = ConferenceDial()
+  
     // keep track if we've spawned a call to control re-activation list reloads
     var didCall: Bool = false
     let mySynthesizer = AVSpeechSynthesizer()
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.reload()
+        //self.reload()
     }
     
     override func didReceiveMemoryWarning() {

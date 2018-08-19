@@ -2,9 +2,8 @@
 //  ConferenceDial.swift
 //  fastdial
 //
-//  Created by Brian J Hernacki on 3/10/17.
-//  Updated 4/19/17
-//  Copyright © 2017 Brian J Hernacki. All rights reserved.
+//  Created by Brian J Hernacki and Jeremy F Bennett on 3/10/17.
+//  Copyright © 2018 Brian J Hernacki and Jeremy F Bennett. All rights reserved.
 //
 
 import UIKit
@@ -48,7 +47,7 @@ class ConferenceDial {
         while haveCalAccess == false {
             sleep(2)
             retryCount+=1
-            if retryCount > 10 {
+            if retryCount > 3 {
                 NSLog("Too many attempts to ask permission for calendar. Bailing.")
                 break
             }
@@ -81,8 +80,7 @@ class ConferenceDial {
         NSLog("Looking for events")
 
         
-        // XXX should wait for this to return before proceeding
-        // store.requestAccess(to: EKEntityType.event, completion:{granted, error in assert(granted); return })
+        // Assumes calendar event access has been granted
         
         var now = Date()
         // Create the start/end date components. this allows us to select the date center mostly for debug purposes
@@ -144,6 +142,9 @@ class ConferenceDial {
                     
                     // truncate long event titles to fit more nicely on screen
                     var truncatedTitle = event.title
+                  
+                    // Let's be fair, the event data object should store the full string and the
+                    // view should do the truncation. Bad MVC, no cookie.
                     if event.title.characters.count > maxTitleLength {
                         NSLog("Truncating long name")
                         truncatedTitle = (event.title as NSString).substring(to: maxTitleLength)
